@@ -2,7 +2,7 @@
  
 
  
-## About Delish-Us
+## About University of Life
 
 Delish-Us is a Yelp inspired showcase Application, demonstrating the use of the Google Maps API, React, and Responsive Design principles
 
