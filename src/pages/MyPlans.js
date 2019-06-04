@@ -11,6 +11,7 @@ import { confirmAlert } from 'react-confirm-alert'; // Import
 import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 import {faSchool} from '@fortawesome/free-solid-svg-icons';
 import {faTrash} from '@fortawesome/free-solid-svg-icons';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const photo = require('../img/diploma.png');
 
@@ -89,17 +90,23 @@ class MyPlans extends Component {
   schoolStore = this.props.schoolStore;
   routingStore = this.props.routingStore;
 
+  state = {
+    loading: false
+  }
+
+
   async componentDidMount() {
     this.getPlans();
   }
 
   getPlans = async () => {
     console.log('aye1')
+    this.setState({loading:true})
     const result = await this.props.client.query({
       query: getPlansByUser,
       variables: {user_id: this.props.match.params.user_id}
     });
-    console.log(result)
+    this.setState({loading:false})
     this.schoolStore.userPlans = [];
     this.schoolStore.userPlans = result.data.getPlansByUser;
   };
@@ -151,6 +158,9 @@ class MyPlans extends Component {
                 <FontAwesomeIcon className='dollar-icon fa-8x' icon={faChartLine} />
                 <div className='spacer' />
                 <div className='spacer' />
+                <div style={{justifyContent: "center", display:"flex"}}>
+              {this.state.loading == true ? (<CircularProgress size={80}   /> ) : ( null )}
+              </div>
                 {this.schoolStore.userPlans.map(plan => (
                   <React.Fragment key={plan.id}>
                     <div onClick={() => this.goToPlan(plan.id)} className='card mb-3 quote-card'>
@@ -190,7 +200,7 @@ class MyPlans extends Component {
                             <div className='detail-header text-left total-cost'>
                               Median Salary:{' '}
                               <CurrencyFormat
-                                value={plan.major.starting_medium_salary}
+                                value={plan.projected_salary}
                                 displayType={'text'}
                                 thousandSeparator={true}
                                 prefix={'$'}
@@ -199,6 +209,8 @@ class MyPlans extends Component {
                             </div>
                           </div>
                         </div>
+                        <div className="detail-school-header text-left"> <b>ROI Ratio: {  Math.round(parseInt(plan.projected_cost) /  parseInt(plan.projected_salary)  * 100) / 100 }</b>  </div>
+
                         <div className='row float-right'>
                           <FontAwesomeIcon onClick={e => this.deletePlanModal(plan.id, e)} className='fa-2x text-left' icon={faTrash} className="mr-1" />
                         </div>

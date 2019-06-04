@@ -4,6 +4,7 @@ import posed from 'react-pose';
 import { gql } from "apollo-boost";
 import { withApollo } from 'react-apollo';
 import * as CurrencyFormat from 'react-currency-format';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const photo = require("../img/diploma.png");
 
@@ -33,13 +34,19 @@ class SearchSchools extends Component {
   uiStore = this.props.uiStore;
   schoolStore = this.props.schoolStore;
 
+  state = {
+    loading: false
+  }
+
   onChange = async e => {
     this.schoolStore.schoolSerchFilter = e.target.value;
     if (this.schoolStore.schoolSerchFilter.length > 2) {
+      this.setState({loading:true})
       const result = await this.props.client.query({
         query: SearchSchoolsQuery,
         variables: {name: this.schoolStore.schoolSerchFilter}
       });
+      this.setState({loading:false})
       this.schoolStore.schoolSearchResults = result.data.searchSchools;
     }
   };
@@ -58,8 +65,8 @@ class SearchSchools extends Component {
                 <div className='spacer' />
                 <img src={photo} className='diploma' alt='Responsive image' />
                 <div className='form-group dashboard-form'>
-                  <label>Search Your University</label>
-
+                  <label>Search Your University {this.state.loading ? (<span>   Loading...</span> ) : ( null )}</label>
+      
                   <div className='input-group input-group-alternative mb-4'>
                     <div className='input-group-prepend'>
                       <span className='input-group-text'>
@@ -78,6 +85,10 @@ class SearchSchools extends Component {
             </section>
 
             <div className='album py-5'>
+              <div style={{justifyContent: "center", display:"flex"}}>
+              {this.schoolStore.schoolSearchResults.length == 0 && this.state.loading == true ? (<CircularProgress size={80}   /> ) : ( null )}
+              </div>
+           
               <div className='row row-eq-height'>
                 {this.schoolStore.schoolSearchResults.map(school => (
                   <div key={school.unit_id} className='col-md-4'>

@@ -50,17 +50,18 @@ class SearchMajors extends Component {
   schoolStore = this.props.schoolStore;
 
   state = {
-    majors: [],
-    name: '',
+    loading: false
   }
 
   onChange = async e => {
     this.schoolStore.majorSearchFilter = e.target.value;
     if (this.schoolStore.majorSearchFilter.length > 2) {
+      this.setState({loading:true})
       const result = await this.props.client.query({
         query: SearchMajorsQuery,
         variables: {name: this.schoolStore.majorSearchFilter}
       });
+      this.setState({loading:false})
       this.schoolStore.majorSearchResults = result.data.searchMajors;
     }
   };
@@ -144,6 +145,10 @@ class SearchMajors extends Component {
         </div>
 
         <div className='album py-5'>
+        <div style={{justifyContent: "center", display:"flex"}}>
+              {this.schoolStore.majorSearchResults.length == 0 && this.state.loading == true ? (<CircularProgress size={80}   /> ) : ( null )}
+              </div>
+           
           <div className='row row-eq-height'>
             {this.schoolStore.majorSearchResults.map(major => (
               <div onClick={() => this.schoolStore.goToResults(major)} key={major.id} className='col-md-4'>

@@ -186,21 +186,22 @@ class Plan extends Component {
                               </div>
                             ) : null}
                             <div className='detail-header text-left total-cost'>
-                              Median Salary:{' '}
+                              Median Salary:
                               <CurrencyFormat
-                                value={this.schoolStore.selectedPlan.major.starting_medium_salary}
+                                value={this.schoolStore.selectedPlan.major.mid_careeer_medium_salary}
                                 displayType={'text'}
                                 thousandSeparator={true}
                                 prefix={'$'}
                                 renderText={value => <span>{value}</span>}
                               />
+
                             </div>
                           </div>
                         </div>
+                        <div className='spacer' />
+                            <div className='spacer' />
+                        <div className="detail-school-header">ROI Ratio: {  Math.round(parseInt(this.schoolStore.selectedPlan.projected_cost) /  parseInt(this.schoolStore.selectedPlan.major.mid_careeer_medium_salary)  * 100) / 100 }  </div>
                         <PieChart data={this.state.data} options={chartOptions} width="600" height="150" />
-
-
-                       
 
                       </div>
                     </div>

@@ -87,6 +87,15 @@ class SearchResults extends Component {
   schoolStore = this.props.schoolStore;
   routingStore = this.props.routingStore;
 
+
+  componentDidMount = () => {
+    if(!this.schoolStore.selectedSchool.name || !this.schoolStore.selectedMajor.name  ){
+      this.routingStore.history.push('/searchschools');
+    }
+  }
+
+
+
   onChange = async e => {
     this.schoolStore.schoolSerchFilter = e.target.value;
     if (this.schoolStore.schoolSerchFilter.length > 2) {
