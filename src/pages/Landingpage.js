@@ -32,44 +32,34 @@ class Landingpage extends Component {
   <div className="position-relative">
 
     <section className="section section-lg section-shaped pb-250">
-      <div className="shape shape-style-1 shape-default">
-        <span />
-        <span />
-        <span />
-        <span />
-        <span />
-        <span />
-        <span />
-        <span />
-        <span />
-      </div>
+
       <div className="container py-lg-md d-flex">
         <div className="col px-0">
           <div className="row">
-            <div className="col-lg-6">
+            <div className="col-lg-12 text-center">
 
             <Fade  pose={this.state.isVisible ? 'visible' : 'hidden'}>
-              <h1 className="display-3">
-                Share the places you love 
-                <span>with the people you love</span>
-              </h1>
+              <h1 className="display-1"> The University of Life
+              
+               </h1>
             
-
+               <h1 className="display-4">Informed Decisions. Better Education.</h1>
               <p className="lead">
-                Life is better when we eat together. DelishUs let's you keep track and share your favorite resturants with friends and family. 
+                 Education impacts your entire life. Don't leave that up to chance. Compare the financial data of your favorite choice schools. Make the best possible decision for your future.
               </p>
+
               </Fade>
               <div className="btn-wrapper">
               <Fade  pose={this.state.isVisible ? 'visible' : 'hidden'}>
         {this.sessionStore.authUser?
        
         <Link
-        to="/dashboard"
-        className="btn btn-white btn-icon mb-3 mb-sm-0"
+        to="/searchschools"
+        className="btn btn-lg btn-block btn-white btn-icon mb-3 mb-sm-0"
       >
       
         <span className="btn-inner--text">
-          Dashboard
+          Get Started
         </span>
       </Link>
        
@@ -77,10 +67,10 @@ class Landingpage extends Component {
         
         <Link
         to="/signup"
-        className="btn btn-white btn-icon mb-3 mb-sm-0"
+        className="btn btn-lg btn-block btn-white btn-icon mb-3 mb-sm-0"
       >
         <span className="btn-inner--text">
-          Register Now
+        Get Started
         </span>
       </Link>
         }
@@ -90,7 +80,7 @@ class Landingpage extends Component {
 
               </div>
             </div>
-            <div className="col-md-6 order-md-2">
+            {/* <div className="col-md-6 order-md-2">
             <Fade pose={this.state.isVisible ? 'visible' : 'hidden'}>
           <img
             src={require("../img/family-eating.png")} 
@@ -98,32 +88,18 @@ class Landingpage extends Component {
             className="img-fluid floating  mx-auto d-block"
           />
            </Fade>
-        </div>
+        </div> */}
           </div>
         </div>
       </div>
       
-      <div className="separator separator-bottom separator-skew">
-        <svg
-          x={0}
-          y={0}
-          viewBox="0 0 2560 100"
-          preserveAspectRatio="none"
-          version="1.1"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <polygon
-            className="fill-white"
-            points="2560 0 2560 100 0 100"
-          />
-        </svg>
-      </div>
+
 
     </section>
     {/* 1st Hero Variation */}
   </div>
 
-  <section className="section section-lg white-bg">
+  {/* <section className="section section-lg white-bg">
     <div className="container">
       <div className="row row-grid align-items-center">
         <div className="col-md-4 order-md-2">
@@ -188,7 +164,7 @@ class Landingpage extends Component {
         </div>
       </div>
     </div>
-  </section>
+  </section> */}
 </main>
       </div>
     );

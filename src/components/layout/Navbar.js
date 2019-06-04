@@ -3,11 +3,13 @@ import {Link} from 'react-router-dom';
 import {inject, observer} from 'mobx-react';
 import AvatarMenu from './avatar-menu';
 import styled from 'styled-components';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGraduationCap } from "@fortawesome/free-solid-svg-icons";
 
 const Nav = styled.div`
   z-index: 1;
-  background-color: white !important;
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.15);
+ 
+ 
   position: fixed;
   top: 0;
   right: 0;
@@ -36,8 +38,8 @@ class Navbar extends Component {
     const NavigationNonAuth = () => (
       <nav className='navbar navbar-expand-lg py-2 fixed-top' style={{backgroundColor: 'white'}}>
         <div className='container'>
-          <Link style={{textDecoration: 'none'}} to='/dashboard'>
-            <AvatarImg className='img-fluid' src={require('../../img/compass.png')} alt='Logo' />
+          <Link style={{textDecoration: 'none'}} to='/searchschools'>
+          <FontAwesomeIcon className="icon-layers text-primary fa-2x" icon={faGraduationCap}/>
             <b className='ml-3'>DELISH-US</b>
           </Link>
 
@@ -51,18 +53,12 @@ class Navbar extends Component {
     const NavigationAuth = props => (
       <nav className='navbar navbar-expand-lg py-2'>
         <div className='container'>
-          <Link style={{textDecoration: 'none'}} to='/dashboard'>
-            <AvatarImg className='img-fluid' src={require('../../img/compass.png')} alt='Logo' />
-            <b className='ml-3'>DELISH-US</b>
+          <Link style={{textDecoration: 'none'}} to='/searchschools'>
+          <FontAwesomeIcon className="icon-layers text-primary fa-2x" icon={faGraduationCap}/>
+            <b className='ml-3'>University of Life</b>
           </Link>
 
-          <ViewSwitcher className='ml-auto mr-3 nav-text-style'>
-            <Link id = "users-link" style={{textDecoration: 'none'}} to='/users'>
-              <span className='ml-auto mr-3 nav-text-style'>
-                <b>USERS</b>
-              </span>
-            </Link>
-          </ViewSwitcher>
+
 {/* <p onClick={this.uiStore.startTour}>test</p> */}
           <AvatarMenu />
         </div>

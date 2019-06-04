@@ -21,7 +21,30 @@ import PropTypes from "prop-types";
 import ReactJoyride, { EVENTS } from "react-joyride";
 import { inject, observer } from 'mobx-react';
 import  bootstrapURLKeys  from './keys'
-console.log(bootstrapURLKeys.key)
+import  SearchSchools  from "./pages/SearchSchools"
+import  SearchMajors  from "./pages/SearchMajors"
+import  SearchResults  from "./pages/SearchResults"
+import  MyPlans  from "./pages/MyPlans"
+import  Plan  from "./pages/Plan"
+import ApolloClient from 'apollo-boost';
+import { ApolloProvider } from "react-apollo";
+
+const defaultOptions = {
+  watchQuery: {
+    fetchPolicy: 'no-cache',
+    errorPolicy: 'ignore',
+  },
+  query: {
+    fetchPolicy: 'no-cache',
+    errorPolicy: 'all',
+  },
+}
+
+const client = new ApolloClient({
+  uri: "https://university-of-life-core.herokuapp.com/graphql"
+
+});
+
 
 GoogleMapsLoader.KEY = bootstrapURLKeys.key;
 GoogleMapsLoader.LIBRARIES = ['places'];
@@ -84,6 +107,7 @@ class App extends Component {
 
   render() {
     return (
+      <ApolloProvider client={client}>
       <Router history={history} onUpdate={() => window.scrollTo(0, 0)}>
         <ScrollToTop>
           <Navbar />
@@ -106,11 +130,16 @@ class App extends Component {
                   <RoutesContainer key={location.pathname}>
                     <Switch location={location}>
                       <Route path='/dashboard' component={MapDashboard} key='dashboard' />
+                      <Route path='/searchschools' component={SearchSchools} key='SearchSchools' />
+                      <Route path='/searchmajor' component={SearchMajors} key='SearchMajors' />
                       <Route path='/users' component={UsersPage} key='users' />
                       <Route path='/account' component={AccountPage} key='account' />
                       <Route path='/login' component={Login} key='login' />
                       <Route path='/signup' component={Signup} key='signup' />
                       <Route exact path='/' component={Landingpage} key='landingPage' />
+                      <Route exact path='/results' component={SearchResults} key='results' />
+                      <Route  path='/plans/:user_id' component={MyPlans} key='plans' />
+                      <Route  path='/plan/:plan_id' component={Plan} key='plan' />
                     </Switch>
                   </RoutesContainer>
                 </PoseGroup>
@@ -119,6 +148,7 @@ class App extends Component {
           />
         </ScrollToTop>
       </Router>
+      </ApolloProvider>
     );
   }
 }

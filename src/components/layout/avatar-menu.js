@@ -32,7 +32,10 @@ class AvatarMenu extends Component {
   };
 
   goToMyProfile = () => {
-    this.routingStore.history.push({pathname: '/users/' + this.sessionStore.authUser.uid});
+    this.routingStore.history.push({
+      pathname: '/plans/' + this.sessionStore.authUser.uid,
+      state: {userId: this.sessionStore.authUser.uid }
+    });
   };
 
   render() {

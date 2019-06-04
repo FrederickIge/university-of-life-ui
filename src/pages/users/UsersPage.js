@@ -11,8 +11,6 @@ import DesktopUserProfile from '../../components/desktop/DesktopUserProfile';
 import MobileUserProfile from '../../components/mobile/MobileUserProfile';
 import MobileUserList from '../../components/mobile/MobileUserList';
 
-
-
 const GoogleMapContainer = styled.div`
   height: 100%;
 `;

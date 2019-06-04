@@ -6,6 +6,7 @@ import FireStore from './fireStore';
 import SpotStore from './spotStore';
 import UiStore from './uiStore'
 import CommentStore from './commentStore'
+import SchoolStore from './schoolStore'
 
 class RootStore {
   constructor() {
@@ -16,7 +17,7 @@ class RootStore {
     this.uiStore = new UiStore(this);
     this.userStore = new UserStore(this);
     this.routingStore = new RouterStore(this);
-    console.log(this.routingStore)
+    this.schoolStore = new SchoolStore(this);
   }
 }
 
