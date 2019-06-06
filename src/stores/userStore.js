@@ -36,7 +36,7 @@ class UserStore {
     // Popup signin flow rather than redirect flow.
     signInFlow: 'redirect',
     // Redirect to /signedIn after sign in is successful. Alternatively you can provide a callbacks.signInSuccess function.
-    signInSuccessUrl: '/dashboard',
+    signInSuccessUrl: '/searchschools',
     // We will display Google and Facebook as auth providers.
     signInOptions: [firebase.auth.GoogleAuthProvider.PROVIDER_ID],
     callbacks: {
@@ -52,7 +52,7 @@ class UserStore {
   emailLogin = (email, password) => {
     auth.doSignInWithEmailAndPassword(email, password).then(
       action('fetchSuccess', response => {
-        this.rootStore.routingStore.push('/dashboard');
+        this.rootStore.routingStore.push('/searchschools');
       }),
       action('fetchError', error => {
         this.error = error;
@@ -104,7 +104,7 @@ class UserStore {
         email: user.email
       })
       .then(data => {
-        this.rootStore.routingStore.push('/dashboard');
+        this.rootStore.routingStore.push('/searchschools');
         this.rootStore.uiStore.runTour = true;
       });
   };
@@ -142,7 +142,7 @@ class UserStore {
   }
 
   getUserSpots = async userId => {
-    console.log('yuh')
+  
     this.currentUserSpots = [];
 
     let querySnapshot = await this.rootStore.fireStore.fetchSpotsByUserId(userId);

@@ -185,7 +185,7 @@ class SearchResults extends Component {
                 {/* <h3 className='detail-header text-left'>Avaliable Jobs: {schoolStore.selectedMajor.starting_medium_salary}</h3> */}
               
             
-                    {schoolStore.selectedMajor.starting_medium_salary ? ( <CurrencyFormat value={schoolStore.selectedMajor.starting_medium_salary} displayType={'text'} thousandSeparator={true} prefix={'$'} renderText={value =>   <h2 className='display-4'>Median Salary: {value}</h2>} /> ) : ( null)}
+                    {schoolStore.selectedMajor.starting_medium_salary ? ( <CurrencyFormat value={schoolStore.selectedMajor.mid_careeer_medium_salary} displayType={'text'} thousandSeparator={true} prefix={'$'} renderText={value =>   <h2 className='display-4'>Median Salary: {value}</h2>} /> ) : ( null)}
              
               </div>
             </div>

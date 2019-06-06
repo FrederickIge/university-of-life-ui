@@ -40,7 +40,7 @@ class Navbar extends Component {
         <div className='container'>
           <Link style={{textDecoration: 'none'}} to='/searchschools'>
           <FontAwesomeIcon className="icon-layers text-primary fa-2x" icon={faGraduationCap}/>
-            <b className='ml-3'>University of LifeS</b>
+            <b className='ml-3'>University of Life</b>
           </Link>
 
           <Link style={{textDecoration: 'none'}} to='/login' className='ml-auto mr-3 nav-text-style'>

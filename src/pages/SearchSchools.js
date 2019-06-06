@@ -65,7 +65,7 @@ class SearchSchools extends Component {
                 <div className='spacer' />
                 <img src={photo} className='diploma' alt='Responsive image' />
                 <div className='form-group dashboard-form'>
-                  <label>Search Your University {this.state.loading ? (<span>   Loading...</span> ) : ( null )}</label>
+                  <label>Search Your University </label>
       
                   <div className='input-group input-group-alternative mb-4'>
                     <div className='input-group-prepend'>

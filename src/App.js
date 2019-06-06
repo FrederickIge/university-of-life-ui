@@ -90,9 +90,7 @@ class App extends Component {
     })
   };
 
-  static defaultProps = {
-    joyride: {}
-  };
+
 
   componentDidMount() {
     GoogleMapsLoader.load(function(google) {});
@@ -111,15 +109,7 @@ class App extends Component {
       <Router history={history} onUpdate={() => window.scrollTo(0, 0)}>
         <ScrollToTop>
           <Navbar />
-          <ReactJoyride         
-          continuous
-          scrollToFirstStep
-          showProgress
-          showSkipButton
-          run={this.uiStore.runTour}
-          steps={this.uiStore.tourSteps}
-          callback={this.handleJoyrideCallback}
-        />
+
           <Route
             render={({location}) => (
               <div id='main-container' className='main-container-full'>

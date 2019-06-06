@@ -137,12 +137,19 @@ class Plan extends Component {
 
   }
 
+  handleBack = () => {
+    this.props.history.goBack();
+  };
+
   render() {
     return (
       <React.Fragment>
         {/* <Slide> */}
           <div className='container'>
             <div className='spacer' />
+            <div onClick={this.handleBack} style={{ fontSize: "20px", cursor: "pointer", color:"black"  }}>
+                        <i className="fa fa-arrow-left" aria-hidden="true"></i> Back
+                    </div>
             <div className='basic-school-details-container text-center'>
               <div className='results-school-details-container'>
              

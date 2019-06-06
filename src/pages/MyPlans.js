@@ -145,12 +145,19 @@ class MyPlans extends Component {
     });
   };
 
+  handleBack = () => {
+    this.props.history.goBack();
+  };
+
   render() {
     return (
       <React.Fragment>
         <Slide>
           <div className='container'>
             <div className='spacer' />
+            <div onClick={this.handleBack} style={{ fontSize: "20px", cursor: "pointer", color:"black"  }}>
+                        <i className="fa fa-arrow-left" aria-hidden="true"></i> Back
+                    </div>
             <div className='basic-school-details-container text-center'>
               <div className='results-school-details-container'>
                 <h1 className='detail-school-header'>The Plans</h1>
@@ -209,10 +216,11 @@ class MyPlans extends Component {
                             </div>
                           </div>
                         </div>
+                        <div className='spacer' />
                         <div className="detail-school-header text-left"> <b>ROI Ratio: {  Math.round(parseInt(plan.projected_cost) /  parseInt(plan.projected_salary)  * 100) / 100 }</b>  </div>
 
                         <div className='row float-right'>
-                          <FontAwesomeIcon onClick={e => this.deletePlanModal(plan.id, e)} className='fa-2x text-left' icon={faTrash} className="mr-1" />
+                          <FontAwesomeIcon onClick={e => this.deletePlanModal(plan.id, e)}  icon={faTrash} className="mr-1 fa-2x" />
                         </div>
                       </div>
                     </div>

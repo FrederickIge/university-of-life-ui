@@ -2,7 +2,10 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { inject, observer } from 'mobx-react';
 import posed from 'react-pose';
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {faDollarSign} from '@fortawesome/free-solid-svg-icons';
+import { faGraduationCap } from "@fortawesome/free-solid-svg-icons";
+import { faExchangeAlt } from "@fortawesome/free-solid-svg-icons";
 const Fade = posed.div({
   hidden: { opacity: 0 },
   visible: { opacity: 1 }
@@ -27,79 +30,54 @@ class Landingpage extends Component {
 
     return (
       <div>
- 
- <main>
-  <div className="position-relative">
+        <main>
+          <div className='position-relative'>
+            <section className='section section-lg section-shaped pb-250'>
+              <div className='container py-lg-md d-flex'>
+                <div className='col px-0'>
+                  <div className='row'>
+                    <div className='col-lg-12 text-center'>
+                      <Fade pose={this.state.isVisible ? 'visible' : 'hidden'}>
+                        <h1 className='display-1'> The University of Life</h1>
 
-    <section className="section section-lg section-shaped pb-250">
+                        <h1 className='display-4'>Informed Decisions. Better Education.</h1>
+                        <div className="spacer" />
 
-      <div className="container py-lg-md d-flex">
-        <div className="col px-0">
-          <div className="row">
-            <div className="col-lg-12 text-center">
+                        <div className='d-flex justify-content-between' style={{width:"50%", margin:"auto"}}>
+                          <FontAwesomeIcon className='icon-layers text-primary fa-2x' icon={faGraduationCap} />
+                          <FontAwesomeIcon className='icon-layers text-primary fa-2x' icon={faExchangeAlt} />
+                          <FontAwesomeIcon className='icon-layers text-primary fa-2x' icon={faDollarSign} />
+                        </div>
+                        <div className="spacer" />
 
-            <Fade  pose={this.state.isVisible ? 'visible' : 'hidden'}>
-              <h1 className="display-1"> The University of Life
-              
-               </h1>
-            
-               <h1 className="display-4">Informed Decisions. Better Education.</h1>
-              <p className="lead">
-                 Education impacts your entire life. Don't leave that up to chance. Compare the financial data of your favorite choice schools. Make the best possible decision for your future.
-              </p>
+                        <p className='lead'>
+                          Education impacts your entire life. Don't leave that up to chance. Compare the financial data of your favorite choice
+                          schools. Make the best possible decision for your future.
+                        </p>
+                      </Fade>
+                      <div className='btn-wrapper'>
+                        <Fade pose={this.state.isVisible ? 'visible' : 'hidden'}>
+                          {this.sessionStore.authUser ? (
+                            <Link to='/searchschools' className='btn btn-lg btn-block btn-white btn-icon mb-3 mb-sm-0'>
+                              <span className='btn-inner--text'>Get Started</span>
+                            </Link>
+                          ) : (
+                            <Link to='/signup' className='btn btn-lg btn-block btn-white btn-icon mb-3 mb-sm-0'>
+                              <span className='btn-inner--text'>Get Started</span>
+                            </Link>
+                          )}
+                        </Fade>
+                      </div>
+                    </div>
 
-              </Fade>
-              <div className="btn-wrapper">
-              <Fade  pose={this.state.isVisible ? 'visible' : 'hidden'}>
-        {this.sessionStore.authUser?
-       
-        <Link
-        to="/searchschools"
-        className="btn btn-lg btn-block btn-white btn-icon mb-3 mb-sm-0"
-      >
-      
-        <span className="btn-inner--text">
-          Get Started
-        </span>
-      </Link>
-       
-        :
-        
-        <Link
-        to="/signup"
-        className="btn btn-lg btn-block btn-white btn-icon mb-3 mb-sm-0"
-      >
-        <span className="btn-inner--text">
-        Get Started
-        </span>
-      </Link>
-        }
- </Fade>
-
-
-
+                  </div>
+                </div>
               </div>
-            </div>
-            {/* <div className="col-md-6 order-md-2">
-            <Fade pose={this.state.isVisible ? 'visible' : 'hidden'}>
-          <img
-            src={require("../img/family-eating.png")} 
-            alt="Smiley face"
-            className="img-fluid floating  mx-auto d-block"
-          />
-           </Fade>
-        </div> */}
-          </div>
-        </div>
-      </div>
+            </section>
       
+          </div>
 
-
-    </section>
-    {/* 1st Hero Variation */}
-  </div>
-
-  {/* <section className="section section-lg white-bg">
+          {/* <section className="section section-lg white-bg">
     <div className="container">
       <div className="row row-grid align-items-center">
         <div className="col-md-4 order-md-2">
@@ -165,7 +143,7 @@ class Landingpage extends Component {
       </div>
     </div>
   </section> */}
-</main>
+        </main>
       </div>
     );
   }
