@@ -85,7 +85,8 @@ class SearchSchools extends Component {
             </section>
 
             <div className='album py-5'>
-              <div style={{justifyContent: "center", display:"flex"}}>
+            {this.schoolStore.schoolSearchResults.length == 0 && this.state.loading == true ? ( <p className="text-center"><b>Heroku Free Tier. Takes a while to load  =P</b></p> ) : ( null )}
+              <div style={{justifyContent: "center", display:"flex"}}>          
               {this.schoolStore.schoolSearchResults.length == 0 && this.state.loading == true ? (<CircularProgress size={80}   /> ) : ( null )}
               </div>
            
