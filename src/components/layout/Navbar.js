@@ -39,12 +39,12 @@ class Navbar extends Component {
       <nav className='navbar navbar-expand-lg py-2 fixed-top' style={{backgroundColor: 'white'}}>
         <div className='container'>
           <Link style={{textDecoration: 'none'}} to='/searchschools'>
-          <FontAwesomeIcon className="icon-layers text-primary fa-2x" icon={faGraduationCap}/>
-            <b className='ml-3'>University of Life</b>
+          <FontAwesomeIcon style={{fontSize: '18px'}} className="icon-layers text-primary fa-2x" icon={faGraduationCap}/>
+            <b style={{fontSize: '14px'}} className='ml-3'>University of Life</b>
           </Link>
 
           <Link style={{textDecoration: 'none'}} to='/login' className='ml-auto mr-3 nav-text-style'>
-            <b>LOGIN</b>
+            <b style={{fontSize: '14px'}}>Login</b>
           </Link>
         </div>
       </nav>
@@ -54,8 +54,8 @@ class Navbar extends Component {
       <nav className='navbar navbar-expand-lg py-2'>
         <div className='container'>
           <Link style={{textDecoration: 'none'}} to='/searchschools'>
-          <FontAwesomeIcon className="icon-layers text-primary fa-2x" icon={faGraduationCap}/>
-            <b className='ml-3'>University of Life</b>
+          <FontAwesomeIcon style={{fontSize: '18px'}} className="icon-layers text-primary fa-2x" icon={faGraduationCap}/>
+            <b style={{fontSize: '14px'}} className='ml-3'>University of Life</b>
           </Link>
 
 
